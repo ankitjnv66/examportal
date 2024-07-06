@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -30,6 +32,7 @@ public class UserController {
         userRole.setRole(role);
 
         userRoles.add(userRole);
+        user.setProfile("default.png");
 
         return this.userService.createUser(user, userRoles);
     }
@@ -37,6 +40,11 @@ public class UserController {
     @GetMapping("/{userName}")
     public User getUserByUserName(@PathVariable("userName") String userName) {
         return this.userService.getUserByUserName(userName);
+    }
+
+    @GetMapping("/getUsers")
+    public List<User> fetchAllUsers() {
+        return this.userService.getAllUser();
     }
 
     @DeleteMapping("/del/{userId}")

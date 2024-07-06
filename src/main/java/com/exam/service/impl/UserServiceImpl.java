@@ -8,6 +8,7 @@ import com.exam.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -46,5 +47,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(Long id) {
         this.userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return this.userRepository.findAll();
     }
 }
