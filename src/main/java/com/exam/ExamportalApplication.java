@@ -24,5 +24,6 @@ public class ExamportalApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		//Comment in Command Line Runner.
 	}
 }
